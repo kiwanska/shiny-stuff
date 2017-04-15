@@ -1,0 +1,12 @@
+body {
+  background-color: #00d664;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  body div {
+    height: 600px;
+    width: 1000px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px; }
