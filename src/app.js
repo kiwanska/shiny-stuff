@@ -6,7 +6,9 @@ require('./styles/all.scss');
 
 function app() {
   const element = document.querySelector('#root');
-  element.innerHTML = _.join([header(), charts(), footer()], '');
+  element.innerHTML = _.join([header(), footer()], '');
+  charts();
+  // element.appendChild(charts());
   return element;
 }
 

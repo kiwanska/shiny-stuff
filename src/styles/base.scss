@@ -25,7 +25,10 @@ header {
 }
 
 footer {
-  height: 5%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5 10px;
   font-size: 10px;
   text-align: right;
 }
