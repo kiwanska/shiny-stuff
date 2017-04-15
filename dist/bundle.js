@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -17162,10 +17162,34 @@
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)(module)))
 
 /***/ }),
 /* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = charts;
+function charts() {
+  return `<div class="charts">bongo</div>`;
+}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = footer;
+function footer() {
+  return `<footer>
+            <p>made by <a href="http://github.com/kiwanska">kiwanska</a></p>
+          </footer>`;
+}
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17192,7 +17216,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17220,28 +17244,50 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_header_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_charts_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_footer_js__ = __webpack_require__(3);
+
+
+
 
 __webpack_require__(0);
 
-function component () {
-  const element = document.createElement('div');
-
-  element.innerHTML = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join(['Hello','dominik'], ' ');
-
-  const dominik = 'dominik';
-  console.log(dominik);
-
+function app() {
+  const element = document.querySelector('#root');
+  element.innerHTML = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join([__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__js_header_js__["a" /* default */])(), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__js_charts_js__["a" /* default */])(), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__js_footer_js__["a" /* default */])()], '');
   return element;
 }
 
-document.body.appendChild(component());
+app();
+
+
+/***/ }),
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = title;
+function title() {
+  const title = 'counting Netguru';
+
+  return `<header><h2>${title}</h2></header>`;
+}
 
 
 /***/ })

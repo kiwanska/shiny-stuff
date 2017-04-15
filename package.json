@@ -13,10 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "jsx-loader": "^0.13.2",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "serve": "^5.1.4",
@@ -25,9 +28,12 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "presets": [
-    "env"
+    "env",
+    "react"
   ]
 }

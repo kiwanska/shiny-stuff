@@ -1,15 +1,13 @@
 import _ from 'lodash';
-require('./styles/base.scss');
+import header from './js/header.js';
+import charts from './js/charts.js';
+import footer from './js/footer.js';
+require('./styles/all.scss');
 
-function component () {
-  const element = document.createElement('div');
-
-  element.innerHTML = _.join(['Hello','dominik'], ' ');
-
-  const dominik = 'dominik';
-  console.log(dominik);
-
+function app() {
+  const element = document.querySelector('#root');
+  element.innerHTML = _.join([header(), charts(), footer()], '');
   return element;
 }
 
-document.body.appendChild(component());
+app();

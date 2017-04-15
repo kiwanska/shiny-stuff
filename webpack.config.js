@@ -5,10 +5,12 @@ module.exports = {
   entry: './src/app.js',
   watch: true,
   context: __dirname,
-  entry: './src/app',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
@@ -19,7 +21,7 @@ module.exports = {
           use: ['css-loader', 'sass-loader']
         })
       }
-    ]
+    ],
   },
   plugins: [
     new ExtractTextPlugin('style.css')

@@ -4,9 +4,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
-  body div {
+  body .app {
     height: 600px;
     width: 1000px;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px; }
+
+header {
+  height: 10%;
+  color: #d3d3d3; }
+  header h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 15px; }
+
+footer {
+  height: 5%;
+  font-size: 10px;
+  text-align: right; }
+
+.charts {
+  height: 500px; }
