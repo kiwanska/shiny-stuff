@@ -1,14 +1,13 @@
 import _ from 'lodash';
+require('./styles/base.scss');
 
 function component () {
-  var element = document.createElement('div');
+  const element = document.createElement('div');
 
-  /* lodash is required for the next line to work */
-  element.innerHTML = _.join(['Hello','kasia'], ' ');
+  element.innerHTML = _.join(['Hello','dominik'], ' ');
 
   const dominik = 'dominik';
   console.log(dominik);
-
 
   return element;
 }

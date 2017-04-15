@@ -1,0 +1,17 @@
+@import 'variables';
+
+body {
+  background-color: $accent;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    height: 600px;
+    width: 1000px;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 10px;
+  }
+}
