@@ -44,12 +44,13 @@ export default function pie(data) {
     .attr('class', 'label')
     .attr("transform", (d) => "translate(" + labelArc.centroid(d) + ")" )
     .text(function(d) { return d.data.label;})
+    .attr("text-anchor", "middle")
     .style("fill", "#000");
 
   g.append("text")
     .attr('class', 'counter')
     .attr("transform", (d) =>  "translate(" + innerLabelArc.centroid(d) + ")" )
     .text((d) => Math.round((d.data.count*100/dataSum), -1) + '%' )
+    .attr("text-anchor", "middle")
     .style("fill", "#fff");
-
 }

@@ -50,3 +50,6 @@ footer {
 .arc:hover .counter {
   font-size: 16px !important;
   transition: font-size ease-in 0.3s; }
+
+.bar {
+  fill: #00d664; }

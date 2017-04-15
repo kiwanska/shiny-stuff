@@ -24,3 +24,7 @@
     transition: font-size ease-in $transition-time;
   }
 }
+
+.bar {
+  fill: $accent;
+}
