@@ -1,3 +1,26 @@
-.charts {
-  height: 500px;
+.counter {
+  font-size: 10px;
+  transition: font-size ease-in $transition-time;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.arc:hover {
+  path {
+    fill: $blue !important;
+    transition: fill ease-in $transition-time;
+  }
+
+  .label {
+    fill: $blue !important;
+    font-size: 14px !important;
+    transition: font-size ease-in $transition-time;
+  }
+
+  .counter {
+    font-size: 16px !important;
+    transition: font-size ease-in $transition-time;
+  }
 }

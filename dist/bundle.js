@@ -33850,9 +33850,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_d3__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__charts_pie__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__charts_seniority__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__charts_seniority___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__charts_seniority__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__charts_pie__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__charts_bar__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__charts_bar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__charts_bar__);
 /* harmony export (immutable) */ __webpack_exports__["a"] = charts;
 
 
@@ -33860,19 +33860,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function charts() {
 
-  const seniorityDataset = [
-    { label: 'junior', count: 6 },
-    { label: 'regular', count: 92 },
-    { label: 'senior', count: 32 }
-  ];
+  const seniorityDataset = {
+    dataset: [
+      { label: 'senior', count: 32 },
+      { label: 'regular', count: 92 },
+      { label: 'junior', count: 6 }
+    ],
+    id: 'seniority',
+    size: 300
+  };
 
-  const sexDataset = [
-    { label: 'female', count: 8 },
-    { label: 'male', count: 122 }
-  ];
+  const sexDataset = {
+    dataset: [
+      { label: 'male', count: 122 },
+      { label: 'female', count: 8 }
+    ],
+    id: 'sex',
+    size: 300
+  };
 
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__charts_pie__["a" /* default */])(seniorityDataset, 'seniority');
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__charts_pie__["a" /* default */])(sexDataset, 'sex');
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__charts_pie__["a" /* default */])(seniorityDataset);
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__charts_pie__["a" /* default */])(sexDataset);
 
 }
 
@@ -33993,16 +34001,7 @@ app();
 
 
 /***/ }),
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34011,39 +34010,58 @@ app();
 /* harmony export (immutable) */ __webpack_exports__["a"] = pie;
 
 
-function pie(dataset, id) {
+function pie(data) {
 
-  const width = 100;
-  const height = 100;
-  const radius = Math.min(width, height) / 2;
+  const { dataset, size, id } = data;
+  const radius = size / 3;
   const color = __WEBPACK_IMPORTED_MODULE_0_d3__["scaleOrdinal"]()
-    .range([ '#648C85', '#B3F2C9', '#528C18', '#C3F25C']);
+    .range([ '#20DB77', '#40E08B', '#60E59E', '#80EBB2']);
 
-  const arc = __WEBPACK_IMPORTED_MODULE_0_d3__["arc"]()
-    .innerRadius(0)
-    .outerRadius(radius);
+  const dataSum = dataset.map( (d) => d.count ).reduce((a, b) => a + b, 0);
 
   const pie = __WEBPACK_IMPORTED_MODULE_0_d3__["pie"]()
-    .value(function(d) { return d.count; })
-    .sort(null);
+    .value((d) => d.count )(dataset);
 
-  const svg =  __WEBPACK_IMPORTED_MODULE_0_d3__["select"]('#root')
-    .append('svg')
-    .attr("id", id)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
-    .selectAll('path')
-    .data(pie(dataset))
-    .enter()
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', function(d, i) {
-      return color(d.data.label);
-    });
+  const arc = __WEBPACK_IMPORTED_MODULE_0_d3__["arc"]()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
 
-  return svg;
+  const labelArc = __WEBPACK_IMPORTED_MODULE_0_d3__["arc"]()
+    .outerRadius(radius + 20)
+    .innerRadius(radius + 20);
+
+  const innerLabelArc = __WEBPACK_IMPORTED_MODULE_0_d3__["arc"]()
+    .outerRadius(radius - 45)
+    .innerRadius(radius - 45);
+
+  const svg = __WEBPACK_IMPORTED_MODULE_0_d3__["select"]("#root")
+    .append("svg")
+    .attr("width", size)
+    .attr("height", size)
+    .append("g")
+    .attr("transform", "translate(" + size/2 + "," + size/2 +")");
+
+  const g = svg.selectAll("arc")
+    .data(pie)
+    .enter().append("g")
+    .attr("class", "arc");
+
+  g.append("path")
+    .attr("d", arc)
+    .style("fill", (d) => color(d.data.label) );
+
+  g.append("text")
+    .attr('class', 'label')
+    .attr("transform", (d) => "translate(" + labelArc.centroid(d) + ")" )
+    .text(function(d) { return d.data.label;})
+    .style("fill", "#000");
+
+  g.append("text")
+    .attr('class', 'counter')
+    .attr("transform", (d) =>  "translate(" + innerLabelArc.centroid(d) + ")" )
+    .text((d) => Math.round((d.data.count*100/dataSum), -1) + '%' )
+    .style("fill", "#fff");
+
 }
 
 
